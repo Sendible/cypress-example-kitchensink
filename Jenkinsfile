@@ -102,7 +102,6 @@ pipeline {
         }
       }
     }
-  }
 
   post {
     // shutdown the server running in the background
