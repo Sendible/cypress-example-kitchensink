@@ -42,7 +42,7 @@ pipeline {
     }
  }
   environment {
-    env.BUILD_ID = "SENDIBLE-${BUILD_ID}"
+    env.BUILD_ID = "denpal-${BUILD_ID}"
   }
 
   stages {
