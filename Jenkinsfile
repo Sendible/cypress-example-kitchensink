@@ -54,6 +54,8 @@ pipeline {
                 echo "FOO = ${env.BUILD_ID}" // prints "FOO = foobar"
             }
         }
+    }
+
     stage('build') {
 
       steps {
