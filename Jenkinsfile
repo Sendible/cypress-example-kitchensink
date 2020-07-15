@@ -42,7 +42,7 @@ pipeline {
     }
  }
   environment {
-    env.BUILD_ID = "SENDIBLE-${env.BUILD_ID}"
+    env.BUILD_ID = "SENDIBLE-${BUILD_ID}"
   }
 
   stages {
