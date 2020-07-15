@@ -81,8 +81,9 @@ pipeline {
 
     // this stage runs end-to-end tests, and each agent uses the workspace
     // from the previous stage
+
     stage('cypress parallel tests') {
-      environment {
+        environment {
         // we will be recording test results and video on Cypress dashboard
         // to record we need to set an environment variable
         // we can load the record key variable from credentials store
@@ -91,19 +92,15 @@ pipeline {
         // because parallel steps share the workspace they might race to delete
         // screenshots and videos folders. Tell Cypress not to delete these folders
         CYPRESS_trashAssetsBeforeRuns = 'false'
-      }
-
-      // https://jenkins.io/doc/book/pipeline/syntax/#parallel
-        // start several test jobs in parallel, and they all
-        // will use Cypress Dashboard to load balance any found spec files
-        stage('tester A') {
-          steps {
-             withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
-                echo "Running build ${env.BUILD_ID}"
-                sh "npm run e2e"
-             }
-          }
         }
+
+        steps {
+            withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
+            echo "Running build ${env.BUILD_ID}"
+            sh "npm run e2e"
+            }
+        }
+      }
     }
   }
 
