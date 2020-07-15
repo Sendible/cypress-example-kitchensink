@@ -41,16 +41,12 @@ pipeline {
       image 'cypress/base:10'
     }
   }
-  environment {
-    withEnv(["BUILD_ID=symonSendible001"]) { // it can override any env variable
-    echo "FOO = ${env.BUILD_ID}" // prints "FOO = foobar"
-    }
-  }
 
   stages {
     // first stage installs node dependencies and Cypress binary
     stage("Env Variables") {
         steps {
+            withEnv(["BUILD_ID=symonSendible002"])
             echo "The build number is ${env.BUILD_ID}"
             echo "You can also use \${BUILD_ID} -> ${BUILD_ID}"
             sh 'echo "I can access $BUILD_ID in shell command as well."'
