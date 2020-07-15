@@ -100,7 +100,7 @@ pipeline {
           steps {
              withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
                 echo "Running build ${env.BUILD_ID}"
-                sh "npm run e2e
+                sh "npm run e2e"
              }
           }
         }
