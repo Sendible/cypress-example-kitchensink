@@ -46,7 +46,7 @@ pipeline {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
       environment {
-      ${env.BUILD_ID} = "SENDIBLE-${env.BUILD_ID}"
+        env.BUILD_ID = "SENDIBLE-${env.BUILD_ID}"
       }
       steps {
         // there a few default environment variables on Jenkins
