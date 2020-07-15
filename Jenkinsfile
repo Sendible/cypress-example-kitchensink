@@ -46,7 +46,7 @@ pipeline {
     // first stage installs node dependencies and Cypress binary
     stage("Env Variables") {
         steps {
-            withEnv(["BUILD_ID=symon-${env.BUILD_ID"}]) { // it can override any env variable
+            withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) { // it can override any env variable
                 echo "The build number is ${env.BUILD_ID}"
                 echo "You can also use \${BUILD_ID} -> ${BUILD_ID}"
                 sh 'echo "I can access $BUILD_ID in shell command as well."'
@@ -63,7 +63,7 @@ pipeline {
         // there a few default environment variables on Jenkins
         // on local Jenkins machine (assuming port 8080) see
         // http://localhost:8080/pipeline-syntax/globals#env
-        withEnv(["BUILD_ID=symon-${env.BUILD_ID"]}) {
+        withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
             echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
             sh 'npm ci'
             sh 'npm run cy:verify'
@@ -98,7 +98,7 @@ pipeline {
         // will use Cypress Dashboard to load balance any found spec files
         stage('tester A') {
           steps {
-             withEnv(["BUILD_ID=symon-${env.BUILD_ID"}]) {
+             withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
                 echo "Running build ${env.BUILD_ID}"
                 sh "npm run e2e
              }
