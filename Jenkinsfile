@@ -40,10 +40,10 @@ pipeline {
       label 'docker_agent'
       image 'cypress/base:10'
     }
+ }
   environment {
     env.BUILD_ID = "SENDIBLE-${env.BUILD_ID}"
   }
-}
 
   stages {
     // first stage installs node dependencies and Cypress binary
