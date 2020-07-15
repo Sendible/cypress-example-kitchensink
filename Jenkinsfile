@@ -40,14 +40,15 @@ pipeline {
       label 'docker_agent'
       image 'cypress/base:10'
     }
+  environment {
+    env.BUILD_ID = "SENDIBLE-${env.BUILD_ID}"
   }
+}
 
   stages {
     // first stage installs node dependencies and Cypress binary
     stage('build') {
-      environment {
-        env.BUILD_ID = "SENDIBLE-${env.BUILD_ID}"
-      }
+
       steps {
         // there a few default environment variables on Jenkins
         // on local Jenkins machine (assuming port 8080) see
