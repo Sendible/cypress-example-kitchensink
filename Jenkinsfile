@@ -78,8 +78,10 @@ pipeline {
         // will use Cypress Dashboard to load balance any found spec files
         stage('tester A') {
           steps {
+            withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel --ci-build-id ${env.BUILD_ID}"
+            }
           }
         }
 
@@ -87,7 +89,7 @@ pipeline {
         stage('tester B') {
           steps {
             echo "Running build ${env.BUILD_ID}"
-            sh "npm run e2e:record:parallel"
+            sh "npm run e2e:record:parallel --ci-build-id ${env.BUILD_ID}"
           }
         }
       }
