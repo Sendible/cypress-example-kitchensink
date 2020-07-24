@@ -51,6 +51,7 @@ pipeline {
         // http://localhost:8080/pipeline-syntax/globals#env
         withEnv(["BUILD_ID=symon-${env.BUILD_ID}"]) {
             echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+            sh 'npm ci'
             sh 'npm run cy:verify'
         }
       }
